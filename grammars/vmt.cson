@@ -1,0 +1,59 @@
+'scopeName': 'source.vmt'
+'name': 'VMT'
+limitLineLength: false
+'fileTypes': [
+  'vmt'
+]
+'patterns': [
+  {
+    comment: 'Comments'
+    name: 'comment.line.vmt'
+    match: '//.*$'
+  }
+  {
+    comment: 'Shaders'
+    name: 'keyword.operator.vmt'
+    match: '^\\S*(UnlitGeneric|UnlitTwoTexture|VertexLitGeneric|Aftershock|LightmappedGeneric|Lightmapped_4WayBlend|lightmappedreflective|LightmappedTwoTexture|WorldVertexTransition|WorldTwoTextureBlend)\\S*'
+  }
+  # {
+  #   comment: 'Shaders proxies'
+  #   name: 'keyword.operator.vmt'
+  #   match: '^\\s*(Proxies|TextureScroll|WeaponChargeFraction)\\S*'
+  # }
+  {
+    comment: 'Shaders parameters'
+    match: '^\\s*("[^"]*"|[$0-9A-Za-z]+)'
+    captures:
+      1: name: 'support.function.keyvalue'
+  }
+  {
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.string.begin.keyvalue'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.string.end.keyvalue'
+    'patterns': [
+      {
+        'include': 'punctuation.string.begin.keyvalue'
+      }
+      {
+        'include': 'punctuation.string.end.keyvalue'
+      }
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escape.keyvalue'
+      }
+      {
+        'match': '-?\\d+(\\.\\d+)?(\\s+-?\\d+(\\.\\d+)?\\s*)*'
+        'name': 'constant.numeric.keyvalue'
+      }
+      {
+        'match': '[^"]+'
+        'name': 'string.quoted.double.keyvalue'
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "language-vmt",
+  "version": "0.0.0",
+  "description": "VMT Valve Material Type syntax highlight",
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "repository": "https://github.com/Wanty5883/atom-language-vmt",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}
